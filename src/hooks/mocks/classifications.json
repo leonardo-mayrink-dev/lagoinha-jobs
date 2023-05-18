@@ -1,0 +1,6 @@
+[
+  { "label": "G - All ages admitted", "id": "g" },
+  { "label": "PG - Parental guidance suggested", "id": "pg" },
+  { "label": "R - Restricted", "id": "r" },
+  { "label": "X - No one under 17 admitted", "id": "x" }
+]
