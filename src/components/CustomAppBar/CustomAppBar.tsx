@@ -9,6 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { CustomDialog } from "../CustomDialog/CustomDialog";
 import { LoginForm } from "../CustomForm/LoginForm";
 import { ThemeContext, getTheme } from "../../Theme";
+import { LogoDev, Padding } from "@mui/icons-material";
+import { Container } from "@mui/material";
+import logoImg from '../../assets/LagoinhaNiteroi_Branco-1536x864.png';
 
 export default function CustomAppBar({
   drawerHandler,
@@ -34,6 +37,7 @@ export default function CustomAppBar({
           borderBottom: `1px solid ${getTheme(mode).palette.divider}`,
         }}
       >
+
         <Toolbar>
           <IconButton
             size="large"
@@ -44,14 +48,26 @@ export default function CustomAppBar({
           >
             <MenuIcon />
           </IconButton>
+
           <Typography
             variant="h6"
             color={getTheme(mode).palette.text.primary}
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            Front-end Base
+
+            <Box
+              display={'flex'}
+              justifyContent={'center'}
+              alignItems={'end'}
+              flexDirection={'row'}
+            >
+              <img src={logoImg} alt="dt money" style={{ width: "140px", height: "60px" }} />
+
+            </Box>
+
           </Typography>
+
           <Button
             // color={getTheme(mode).palette.text.primary}
             onClick={() => setIsLoginOpen(true)}
