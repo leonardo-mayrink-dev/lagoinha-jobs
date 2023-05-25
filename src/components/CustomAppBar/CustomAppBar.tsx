@@ -62,7 +62,7 @@ export default function CustomAppBar({
               alignItems={'end'}
               flexDirection={'row'}
             >
-              <img src={logoImg} alt="dt money" style={{ width: "140px", height: "60px" }} />
+              <img src={logoImg} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} />
 
             </Box>
 
