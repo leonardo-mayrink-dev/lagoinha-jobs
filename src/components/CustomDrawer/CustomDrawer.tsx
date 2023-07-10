@@ -49,7 +49,7 @@ export function CustomDrawer({
         </IconButton>
       </DrawerHeader>
       <Box
-        sx={{ width: 250, height: '100%' }}
+        sx={{ width: 270, height: '100%' }}
         display={'flex'}
         flexDirection={'column'}
         role="presentation"
@@ -134,6 +134,19 @@ export function CustomDrawer({
                 <Feed />
               </ListItemIcon>
               <ListItemText color="text.main" primary={"Form Screen"} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            key={"businessPanel"}
+            sx={{ textDecoration: "none", color: "inherit" }}
+            component={Link}
+            to="/painelnegocios/"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <Feed />
+              </ListItemIcon>
+              <ListItemText color="text.main" primary={"Painel de Negócios"} />
             </ListItemButton>
           </ListItem>
         </List>
