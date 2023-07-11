@@ -85,32 +85,6 @@ export function CustomDrawer({
             </ListItemButton>
           </ListItem>
           <ListItem
-            key={"candidato"}
-            sx={{ textDecoration: "none", color: "inherit" }}
-            component={Link}
-            to="/candidato"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <Cable />
-              </ListItemIcon>
-              <ListItemText color="text.main" primary={"Candidato"} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem
-            key={"vaga"}
-            sx={{ textDecoration: "none", color: "inherit" }}
-            component={Link}
-            to="/vaga"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <Cable />
-              </ListItemIcon>
-              <ListItemText color="text.main" primary={"Vaga"} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem
             key={"requests"}
             sx={{ textDecoration: "none", color: "inherit" }}
             component={Link}

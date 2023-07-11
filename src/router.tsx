@@ -3,8 +3,6 @@ import { RequestsExamples } from './pages/RequestsExamples';
 import { Example } from './pages/Example';
 import { Forms } from './pages/Forms';
 import { Empresa } from './pages/Empresa';
-import { Candidato } from './pages/Candidato';
-import { Vaga } from './pages/Vaga';
 import { BusinessPanel } from './pages/BusinessPanel';
 
 export function Router() {
@@ -14,8 +12,6 @@ export function Router() {
             <Route path='/forms/' element={<Forms />}/>
             <Route path='/' element={<Example />}/>
             <Route path='/empresa/' element={<Empresa />}/>
-            <Route path='/candidato/' element={<Candidato />}/>
-            <Route path='/vaga/' element={<Vaga />}/>
             <Route path='/painelnegocios/' element={<BusinessPanel />}/>
         </Routes>
     )
