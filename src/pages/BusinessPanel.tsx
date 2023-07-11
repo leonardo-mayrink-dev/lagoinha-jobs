@@ -14,11 +14,23 @@ import GroupIcon from '@mui/icons-material/Group';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import FABMenu from "../components/CustomFab/CustomFab";
 import { CustomBusinessCard } from "../components/CustomCard/BusinessCard";
+import { useEffect, useState } from "react";
+import { Api } from "../services/Api";
+import { TBusiness } from "../types/TBusiness";
 
 export function BusinessPanel() {
     // https://mui.com/material-ui/react-grid/
     // https://mui.com/material-ui/customization/breakpoints/
     // documentation to understand breakpoint system
+    
+    const [businessLit, setBusinessList] = useState<TBusiness[]>([]);
+
+    useEffect(() => {
+        Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")            
+            .then(response =>setBusinessList(response.data))
+            console.log(businessLit);
+    }, []);
+
     return (
         <Grid
             container
@@ -29,11 +41,16 @@ export function BusinessPanel() {
             width={"100%"}
             
         >
-            <Grid item xs={12} sm={12} md={6} lg={3}>
-                <CustomBusinessCard
-                    category="money"
-                    title="Income"
-                    value="R$ 12.350,00"
+            {businessLit.map(business => {
+            return (
+                <Grid item xs={12} sm={12} md={6} lg={3} key={business.id}>
+                <CustomBusinessCard                    
+                    name={business.name}
+                    description={business.description}
+                    services={business.services}
+                    contactName={business.contactName}
+                    address={business.address}
+                    phoneNumber={business.phoneNumber}
                     icon={
                         <CustomIcon
                             icon={<AttachMoneyIcon sx={{ color: "#fff" }} />}
@@ -43,6 +60,11 @@ export function BusinessPanel() {
                     }
                 />
             </Grid>
+            )
+          })}
+
+            
+
            
 
         </Grid>

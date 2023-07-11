@@ -4,57 +4,21 @@ import { CustomIcon } from "../CustomIcon/CustomIcon";
 import { Height } from "@mui/icons-material";
 import zapIcon from '../../assets/ZapVector.png';
 
-type TCustomBusinessCardProps = {
+type TCustomBusinessCardProps = {    
     icon: ReactElement<typeof CustomIcon>;
-    title: string;
-    value: string;
-    category: string;
+    name: string;
+    description: string;
+    services: string;
+    phoneNumber: string;
+    contactName: string;
+    address: string;
 
 };
 
-// category="money"
-// title="Income"
-// value="R$ 12.350,00"
+
 
 export function CustomBusinessCard(props: TCustomBusinessCardProps) {
     return (
-        // <Paper elevation={0} sx={{ borderRadius: 2 }}>
-        //   <Box p={2}>
-        //     <div
-        //       style={{
-        //         display: "flex",
-        //         justifyContent: "space-between",
-        //         alignItems: "center",
-        //         padding: 16,
-        //       }}
-        //     >
-        //       {props.icon}
-        //       <div style={{ textAlign: "right" }}>
-        //         <Typography
-        //           sx={{ fontSize: 14 }}
-        //           color={"text.disabled"}
-        //           gutterBottom
-        //         >
-        //           {props.title}
-        //         </Typography>
-        //         <Typography variant="h5" color={"secondary"} component="div">
-        //           {props.value}
-        //         </Typography>
-        //       </div>
-        //     </div>
-        //     <Divider />
-        //     <Typography
-        //       variant="overline"
-        //       component="div"
-        //       color="text.disabled"
-        //       style={{ textAlign: "left" }}
-        //       px={2}
-        //     >
-        //       {props.category}
-        //     </Typography>
-        //   </Box>
-        // </Paper>
-        /////////////////////////////////////
         <Paper elevation={0} sx={{ borderRadius: 1 }}>
             <Box p={0}>
                 <div
@@ -77,7 +41,7 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         style={{ width: '3rem', height: '3rem', borderRadius: '8px' }}
                         src={'https://avatars.githubusercontent.com/u/32936332?v=4'}
                     />
-                    <strong style={{ padding: 10 }}>QMK Consulting</strong>
+                    <strong style={{ padding: 10 }}>{props.name}</strong>
 
                 </div>
                 <Divider />
@@ -96,8 +60,9 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                             color={"text.primary"}
                             gutterBottom
                         >
-                            Empresa de Consultoria em Tecnologia e Negócios.
-                            Fazemos uma análise sistemática em todas as áreas da sua empresa para corrigir os pontos fracos e alavancar os fortes.
+                            {props.description}
+                            {/* Empresa de Consultoria em Tecnologia e Negócios.
+                            Fazemos uma análise sistemática em todas as áreas da sua empresa para corrigir os pontos fracos e alavancar os fortes. */}
                         </Typography>
 
                     </div>
@@ -116,11 +81,11 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         >
                             Serviços:
                         </Typography>
-
-                        &#x2022; Software House<br />
+                            {props.services}
+                        {/* &#x2022; Software House<br />
                         &#x2022; Generative AI / Chatbots <br />
                         &#x2022; Business Intelligence <br/>
-                        &#x2022; Data Analytics 
+                        &#x2022; Data Analytics  */}
                     </Typography>
 
                 </div>
