@@ -2,10 +2,11 @@ import { createContext, useMemo, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Router } from "./router";
-import { ThemeProvider } from "@mui/material";
+import { Box, Container, Divider, Grid, ThemeProvider, Typography } from "@mui/material";
 import { ThemeContext, getTheme } from "./Theme";
 import { CustomDrawer } from "./components/CustomDrawer/CustomDrawer";
 import CustomAppBar from "./components/CustomAppBar/CustomAppBar";
+import CustomFooter from "./components/CustomFooter/CustomFooter";
 
 function App() {
   const [mode, setMode] = useState<"light" | "dark">("dark");
@@ -40,6 +41,8 @@ function App() {
             />
             <Router />
           </BrowserRouter>
+          <Divider />
+          <CustomFooter />
         </div>
       </ThemeProvider>
     </ThemeContext.Provider>

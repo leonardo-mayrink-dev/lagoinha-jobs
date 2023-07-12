@@ -11,7 +11,8 @@ import { LoginForm } from "../CustomForm/LoginForm";
 import { ThemeContext, getTheme } from "../../Theme";
 import { LogoDev, Padding } from "@mui/icons-material";
 import { Container } from "@mui/material";
-import logoImg from '../../assets/LagoinhaNiteroi_Branco-1536x864.png';
+import logoImgBranco from '../../assets/LagoinhaNiteroi_Branco-1536x864.png';
+import logoImgPreto from '../../assets/LagoinhaNiteroi_Preto-1536x864.png';
 
 export default function CustomAppBar({
   drawerHandler,
@@ -62,8 +63,9 @@ export default function CustomAppBar({
               alignItems={'end'}
               flexDirection={'row'}
             >
-              <img src={logoImg} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} />
-
+              {/* <img src={logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} /> */}
+              <img src={mode === "light" ? logoImgPreto : logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} />
+              
             </Box>
 
           </Typography>
