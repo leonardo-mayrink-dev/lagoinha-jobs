@@ -60,11 +60,8 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                             color={"text.primary"}
                             gutterBottom
                         >
-                            {props.description}
-                            {/* Empresa de Consultoria em Tecnologia e Negócios.
-                            Fazemos uma análise sistemática em todas as áreas da sua empresa para corrigir os pontos fracos e alavancar os fortes. */}
+                            {props.description}                    
                         </Typography>
-
                     </div>
                 </div>
                 <Divider />
@@ -81,11 +78,11 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         >
                             Serviços:
                         </Typography>
-                            {props.services}
-                        {/* &#x2022; Software House<br />
-                        &#x2022; Generative AI / Chatbots <br />
-                        &#x2022; Business Intelligence <br/>
-                        &#x2022; Data Analytics  */}
+                            {props.services.split('-').map(item =>{
+                                return (
+                                    <>&#x2022; {item} <br /></>
+                                )
+                            })} 
                     </Typography>
 
                 </div>

@@ -22,7 +22,7 @@ export default function CustomFooter() {
                     </Grid>
                     <Grid item xs={12}>
                         <Typography color="text.secondary" variant="subtitle1">
-                            {`${new Date().getFullYear()} | React | Material UI | React Router`}
+                            {`Copyright © ${new Date().getFullYear()} Igreja Lagoinha Niterói`}
                         </Typography>
                     </Grid>
                 </Grid>
