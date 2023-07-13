@@ -58,7 +58,7 @@ export function CustomDrawer({
         justifyContent={"space-between"}
       >
         <List>
-          <ListItem
+          {/* <ListItem
             key={"home"}
             sx={{ textDecoration: "none", color: "inherit" }}
             component={Link}
@@ -69,6 +69,19 @@ export function CustomDrawer({
                 <Home />
               </ListItemIcon>
               <ListItemText color="text.main" primary={"Home Screen"} />
+            </ListItemButton>
+          </ListItem> */}
+          <ListItem
+            key={"businessPanel"}
+            sx={{ textDecoration: "none", color: "inherit" }}
+            component={Link}
+            to="/painelnegocios/"
+          >
+            <ListItemButton>
+              <ListItemIcon>
+                <Feed />
+              </ListItemIcon>
+              <ListItemText color="text.main" primary={"Painel de Negócios"} />
             </ListItemButton>
           </ListItem>
           <ListItem
@@ -84,7 +97,7 @@ export function CustomDrawer({
               <ListItemText color="text.main" primary={"Empresa"} />
             </ListItemButton>
           </ListItem>
-          <ListItem
+          {/* <ListItem
             key={"requests"}
             sx={{ textDecoration: "none", color: "inherit" }}
             component={Link}
@@ -96,8 +109,8 @@ export function CustomDrawer({
               </ListItemIcon>
               <ListItemText color="text.main" primary={"Requests Screen"} />
             </ListItemButton>
-          </ListItem>
-          <ListItem
+          </ListItem> */}
+          {/* <ListItem
             key={"forms"}
             sx={{ textDecoration: "none", color: "inherit" }}
             component={Link}
@@ -109,20 +122,7 @@ export function CustomDrawer({
               </ListItemIcon>
               <ListItemText color="text.main" primary={"Form Screen"} />
             </ListItemButton>
-          </ListItem>
-          <ListItem
-            key={"businessPanel"}
-            sx={{ textDecoration: "none", color: "inherit" }}
-            component={Link}
-            to="/painelnegocios/"
-          >
-            <ListItemButton>
-              <ListItemIcon>
-                <Feed />
-              </ListItemIcon>
-              <ListItemText color="text.main" primary={"Painel de Negócios"} />
-            </ListItemButton>
-          </ListItem>
+          </ListItem> */}
         </List>
         <List>
           <ListItem

@@ -6,4 +6,5 @@ export type TBusiness = {
     phoneNumber: string;
     contactName: string;
     address: string;
+    logo: string;
   };

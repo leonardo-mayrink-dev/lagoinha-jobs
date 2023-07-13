@@ -51,6 +51,7 @@ export function BusinessPanel() {
                     contactName={business.contactName}
                     address={business.address}
                     phoneNumber={business.phoneNumber}
+                    logo={business.logo}
                     icon={
                         <CustomIcon
                             icon={<AttachMoneyIcon sx={{ color: "#fff" }} />}

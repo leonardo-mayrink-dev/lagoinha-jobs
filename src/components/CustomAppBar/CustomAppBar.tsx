@@ -64,7 +64,7 @@ export default function CustomAppBar({
               flexDirection={'row'}
             >
               {/* <img src={logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} /> */}
-              <img src={mode === "light" ? logoImgPreto : logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} />
+              <img src={mode === "light" ? logoImgPreto : logoImgBranco} alt="Guia de Negócios - Lagoinha" style={{ width: "140px", height: "60px" }} />
               
             </Box>
 

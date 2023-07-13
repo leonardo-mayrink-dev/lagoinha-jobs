@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
-import { Box, Button, Divider, Paper, Typography } from "@mui/material";
+import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
 import { CustomIcon } from "../CustomIcon/CustomIcon";
-import { Height } from "@mui/icons-material";
+import { BorderAll, Height } from "@mui/icons-material";
 import zapIcon from '../../assets/ZapVector.png';
 
-type TCustomBusinessCardProps = {    
+type TCustomBusinessCardProps = {
     icon: ReactElement<typeof CustomIcon>;
     name: string;
     description: string;
@@ -12,6 +12,7 @@ type TCustomBusinessCardProps = {
     phoneNumber: string;
     contactName: string;
     address: string;
+    logo: string;
 
 };
 
@@ -27,9 +28,10 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         height: '52px',
                         borderTopLeftRadius: '4px',
                         borderTopRightRadius: '4px',
-                        backgroundColor: '#015F43'
-                    }}                
+                        backgroundColor: '#015F43',
+                    }}
                 />
+
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -37,10 +39,22 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                     marginTop: 'calc(0px - 1.5rem - 6px)',
 
                 }}>
+
                     <img
-                        style={{ width: '3rem', height: '3rem', borderRadius: '8px' }}
-                        src={'https://avatars.githubusercontent.com/u/32936332?v=4'}
+                        style={{
+                            width: '4rem',
+                            height: '4rem',
+                            objectFit: 'contain',
+                            borderRadius: '8px',
+                            border: '2px solid #00B37E',
+                            padding: '5px 5px',
+                            backgroundClip: 'content-box, padding-box',
+                            backgroundImage: 'linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%), linear-gradient(to bottom, transparent 0%, #000000 100%)'
+                        }}
+                        src={props.logo}
                     />
+
+
                     <strong style={{ padding: 10 }}>{props.name}</strong>
 
                 </div>
@@ -51,6 +65,7 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         justifyContent: "space-between",
                         alignItems: "center",
                         padding: 10,
+                        minHeight:'100px'
                     }}
                 >
 
@@ -60,12 +75,12 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                             color={"text.primary"}
                             gutterBottom
                         >
-                            {props.description}                    
+                            {props.description}
                         </Typography>
                     </div>
                 </div>
                 <Divider />
-                <div style={{ textAlign: "center", padding: 10, }}>
+                <div style={{ textAlign: "center", padding: 10, minHeight:'120px'}}>
                     <Typography
                         sx={{ fontSize: 14 }}
                         color={"text.primary"}
@@ -78,11 +93,11 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         >
                             Serviços:
                         </Typography>
-                            {props.services.split('-').map(item =>{
-                                return (
-                                    <>&#x2022; {item} <br /></>
-                                )
-                            })} 
+                        {props.services.split('-').map(item => {
+                            return (
+                                <>&#x2022; {item} <br /></>
+                            )
+                        })}
                     </Typography>
 
                 </div>
@@ -92,11 +107,11 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         style={{ border: '1px solid #00B37E', color: '#00B37E' }}
                         type="submit"
                         color="secondary"
-                        >
-                            <img src={zapIcon} alt="Conexão RH - Lagoinha" style={{ width: "16px", height: "17px", padding: '5px' }} />
+                    >
+                        <img src={zapIcon} alt="Conexão RH - Lagoinha" style={{ width: "16px", height: "17px", padding: '5px' }} />
                         Entrar em contato
                     </Button>
-                </Box>         
+                </Box>
             </Box>
         </Paper>
     );
