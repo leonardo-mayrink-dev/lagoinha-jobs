@@ -80,7 +80,7 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                     </div>
                 </div>
                 <Divider />
-                <div style={{ textAlign: "center", padding: 10, minHeight:'120px'}}>
+                <div style={{ textAlign: "center", padding: 10, minHeight:'140px'}}>
                     <Typography
                         sx={{ fontSize: 14 }}
                         color={"text.primary"}

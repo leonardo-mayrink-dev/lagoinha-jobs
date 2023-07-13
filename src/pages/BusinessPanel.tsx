@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 import { MyLinePlot } from "../components/CustomPlot/MyLinePlot";
 import { MyBarPlot } from "../components/CustomPlot/MyBarPlot";
@@ -22,51 +22,53 @@ export function BusinessPanel() {
     // https://mui.com/material-ui/react-grid/
     // https://mui.com/material-ui/customization/breakpoints/
     // documentation to understand breakpoint system
-    
+
     const [businessLit, setBusinessList] = useState<TBusiness[]>([]);
 
     useEffect(() => {
-        Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")            
-            .then(response =>setBusinessList(response.data))
-            console.log(businessLit);
+        Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")
+            .then(response => setBusinessList(response.data))
+        console.log(businessLit);
     }, []);
 
     return (
         <Grid
             container
-            spacing={{ xs: 0, md: 2 }}
+            spacing={{ xs: 0, md:2 }}
             gap={{ xs: 2, md: 0 }}
             py={10}
             px={2}
-            width={"100%"}
-            
+            width={"100%"}            
         >
-            {businessLit.map(business => {
-            return (
-                <Grid item xs={12} sm={12} md={6} lg={3} key={business.id}>
-                <CustomBusinessCard                    
-                    name={business.name}
-                    description={business.description}
-                    services={business.services}
-                    contactName={business.contactName}
-                    address={business.address}
-                    phoneNumber={business.phoneNumber}
-                    logo={business.logo}
-                    icon={
-                        <CustomIcon
-                            icon={<AttachMoneyIcon sx={{ color: "#fff" }} />}
-                            bottomColor="#6dca82"
-                            topColor="#58ced6"
-                        />
-                    }
-                />
+            <Grid item  xs={12} sm={12} md={12} lg={12} style={{margin:'2px 1px' }}>
+                <Typography variant="h5" color={"text.primary"}>GUIA DE NEGÓCIOS</Typography>
             </Grid>
-            )
-          })}
+            {businessLit.map(business => {
+                return (
+                    <Grid item xs={12} sm={12} md={6} lg={3} key={business.id}>
+                        <CustomBusinessCard
+                            name={business.name}
+                            description={business.description}
+                            services={business.services}
+                            contactName={business.contactName}
+                            address={business.address}
+                            phoneNumber={business.phoneNumber}
+                            logo={business.logo}
+                            icon={
+                                <CustomIcon
+                                    icon={<AttachMoneyIcon sx={{ color: "#fff" }} />}
+                                    bottomColor="#6dca82"
+                                    topColor="#58ced6"
+                                />
+                            }
+                        />
+                    </Grid>
+                )
+            })}
 
-            
 
-           
+
+
 
         </Grid>
     );
