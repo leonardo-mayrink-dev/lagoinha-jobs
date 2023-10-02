@@ -16,7 +16,7 @@ import FABMenu from "../components/CustomFab/CustomFab";
 import { CustomBusinessCard } from "../components/CustomCard/BusinessCard";
 import { FormEvent, useEffect, useState } from "react";
 import { Api } from "../services/Api";
-import { TBusiness } from "../types/TBusiness";
+import { TBusiness, TBusiness2 } from "../types/TBusiness";
 import { CustomForm } from "../components/CustomForm/CustomForm";
 import InputAdornment from '@mui/material/InputAdornment';
 
@@ -25,15 +25,15 @@ export function BusinessPanel() {
     // https://mui.com/material-ui/customization/breakpoints/
     // documentation to understand breakpoint system
 
-    const [businessLit, setBusinessList] = useState<TBusiness[]>([]);
+    const [businessLit, setBusinessList] = useState<TBusiness2>();
 
     useEffect(() => {
 
         // Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")
-        Api.get<TBusiness[]>("https://gestao.crielagoinhario.com.br/api/empresas")
+        Api.get<TBusiness2>("https://gestao.crielagoinhario.com.br/api/empresas")
             .then(response => {
                 // console.log(response.data);
-                setBusinessList(response.data.data);
+                setBusinessList(response.data);
             })
 
     }, []);
@@ -107,7 +107,7 @@ export function BusinessPanel() {
             {/* </Grid> */}
 
             {
-                businessLit.map(business => {
+                businessLit?.data.map(business => {
                     return (
                         <Grid item xs={12} sm={12} md={6} lg={3} key={business.id}>
                             <CustomBusinessCard
@@ -117,7 +117,7 @@ export function BusinessPanel() {
                                 services={business.negocio_descricao}
                                 address={business.negocio_endereco}
                                 phoneNumber={business.negocio_tel_wapp}
-                                logo={business.url_imagem}
+                                logo={business.url_logo}
                                 icon={
                                     <CustomIcon
                                         icon={<AttachMoneyIcon sx={{ color: "#fff" }} />}

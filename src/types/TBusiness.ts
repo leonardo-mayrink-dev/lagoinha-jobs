@@ -38,3 +38,42 @@ export type TBusiness = {
   tel_num: number;
   tel_wapp: number;
 };
+
+
+export interface TBusiness2 {
+  error: boolean;
+  msg:   null;
+  data:  Datum[];
+}
+
+export interface Datum {
+  id:                           number;
+  created_at:                   string;
+  updated_at:                   string;
+  publicado:                    string;
+  publicado_datahora:           string;
+  publicado_user_id:            string;
+  doc_tipo:                     string;
+  doc_num:                      string;
+  negocio_nome:                 string;
+  negocio_email:                string;
+  negocio_endereco:             string;
+  negocio_endereco_num:         string;
+  negocio_endereco_complemento: string;
+  negocio_endereco_bairro:      string;
+  negocio_endereco_cidade:      string;
+  negocio_endereco_estado:      string;
+  negocio_endereco_cep:         string;
+  negocio_tel_code:             number;
+  negocio_tel_ddd:              number;
+  negocio_tel_num:              number;
+  negocio_tel_wapp:             number;
+  negocio_descricao:            string;
+  negocio_tipo_slug:            string;
+  negocio_tipo_descricao:       string;
+  url_logo:                     string;
+  url_imagem:                   string;
+  url_website:                  string;
+  url_instagram:                string;
+  iframe_google_maps:           string;
+}
