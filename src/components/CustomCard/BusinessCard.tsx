@@ -1,24 +1,36 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
 import { CustomIcon } from "../CustomIcon/CustomIcon";
-import { BorderAll, Height } from "@mui/icons-material";
+import { BorderAll, FormatAlignJustify, Height } from "@mui/icons-material";
 import zapIcon from '../../assets/ZapVector.png';
+import "./BusinessCard.css";
 
 type TCustomBusinessCardProps = {
     icon: ReactElement<typeof CustomIcon>;
     name: string;
     description: string;
     services: string;
-    phoneNumber: string;
-    contactName: string;
+    phoneNumber: number;
     address: string;
     logo: string;
-
 };
 
 
 
+
 export function CustomBusinessCard(props: TCustomBusinessCardProps) {
+
+    const [isReadMoreDescription, setIsReadMoreDescription] = useState(true);
+    const [isReadMoreServices, setIsReadMoreServices] = useState(true);
+
+    const toggleReadMoreDescription = () => {
+        setIsReadMoreDescription(!isReadMoreDescription);
+    }
+
+    const toggleReadMoreServices = () => {
+        setIsReadMoreServices(!isReadMoreServices);
+    }
+
     return (
         <Paper elevation={0} sx={{ borderRadius: 1 }}>
             <Box p={0}>
@@ -65,22 +77,28 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         justifyContent: "space-between",
                         alignItems: "center",
                         padding: 10,
-                        minHeight:'100px'
+                        minHeight: '100px'
                     }}
                 >
 
-                    <div style={{ textAlign: "center" }}>
+                    <div style={{ textAlign: "justify" }}>
                         <Typography
                             sx={{ fontSize: 14 }}
                             color={"text.primary"}
                             gutterBottom
                         >
-                            {props.description}
+                            {isReadMoreDescription ? props.description.slice(0, 150) : props.description}
+                            <span onClick={toggleReadMoreDescription} className="read-or-hide">
+                                {((isReadMoreDescription && props.description.length > 50) ? " ...ver mais" : " " ) }
+                                {((!isReadMoreDescription && props.description.length > 50) ? " ...ver menos" : " " ) }                                
+                            </span>
+                            
                         </Typography>
+
                     </div>
                 </div>
                 <Divider />
-                <div style={{ textAlign: "center", padding: 10, minHeight:'140px'}}>
+                <div style={{ textAlign: "center", padding: 10, minHeight: '140px' }}>
                     <Typography
                         sx={{ fontSize: 14 }}
                         color={"text.primary"}
@@ -93,11 +111,21 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         >
                             Serviços:
                         </Typography>
-                        {props.services.split('-').map(item => {
-                            return (
-                                <>&#x2022; {item} <br /></>
-                            )
-                        })}
+                        <Typography
+                            align="justify"
+                            sx={{ fontSize: 14 }}
+                            color={"text.primary"}
+                            gutterBottom
+
+                        >                           
+                            {isReadMoreServices ? props.services.slice(0, 150) : props.services}                            
+                            <span onClick={toggleReadMoreServices} className="read-or-hide">
+                                {((isReadMoreServices && props.services.length > 50) ? " ...ver mais" : " " ) }
+                                {((!isReadMoreServices && props.services.length > 50) ? " ...ver menos" : " " ) }                                
+                            </span>
+                        </Typography>
+
+                     
                     </Typography>
 
                 </div>
