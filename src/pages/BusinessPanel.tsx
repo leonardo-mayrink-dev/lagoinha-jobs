@@ -16,7 +16,7 @@ import FABMenu from "../components/CustomFab/CustomFab";
 import { CustomBusinessCard } from "../components/CustomCard/BusinessCard";
 import { FormEvent, useEffect, useState } from "react";
 import { Api } from "../services/Api";
-import { TBusiness, TBusiness2 } from "../types/TBusiness";
+import { Datum, TBusiness, TBusiness2 } from "../types/TBusiness";
 import { CustomForm } from "../components/CustomForm/CustomForm";
 import InputAdornment from '@mui/material/InputAdornment';
 
@@ -25,29 +25,59 @@ export function BusinessPanel() {
     // https://mui.com/material-ui/customization/breakpoints/
     // documentation to understand breakpoint system
 
-    const [businessLit, setBusinessList] = useState<TBusiness2>();
+    const [businessList, setBusinessList] = useState<TBusiness2>();
+    const [businessLitFiltered, setBusinessListFiltered] = useState<Datum[] | undefined>();
+    const [searchTerm, setSearchTerm] = useState('');
+    // const [businessLitFiltered, setBusinessListFiltered] = useState<Datum[]>();
+    const [descricaoNegocio, setDescricaoNegocio] = useState("");
+
+
 
     useEffect(() => {
 
         // Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")
-        Api.get<TBusiness2>("https://gestao.crielagoinhario.com.br/api/empresas")
+        // Promisse
+        getDataFromApi()
             .then(response => {
                 // console.log(response.data);
                 setBusinessList(response.data);
+                setBusinessListFiltered(response.data.data);
             })
 
     }, []);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-        // prevent form from default submit,
-        // since we're going to control the inputs via state
-        e.preventDefault();
+    useEffect(() => {        
+        handleSearchBusinesses(searchTerm);
+    }, [searchTerm])
+
+
+    const getDataFromApi = () => {
+        return Api.get<TBusiness2>("https://gestao.crielagoinhario.com.br/api/empresas");
     }
 
+    const handleSearchBusinesses = (searchTerm: string): void => {
+
+        console.log('entrou no metodo search');
+
+        var lista = businessList?.data;
+
+        const filtered = lista?.filter((item) =>
+            item.negocio_nome.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        console.log(filtered);
+
+        setBusinessListFiltered(filtered);        
+
+        console.log(businessList);
+
+    }
+
+
+
+
+
     return (
-
-
-
 
         <Grid
             container
@@ -62,16 +92,13 @@ export function BusinessPanel() {
                 <Typography variant="h5" color={"text.primary"}>CRIE - OPORTUNIDADES</Typography>
             </Grid>
 
-
-
-
             <Grid
                 container
                 spacing={0}
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
-                // sx={{ minHeight: '100vh' }}
+            // sx={{ minHeight: '100vh' }}
             >
                 <Grid item xs={3}>
                     <Paper
@@ -82,9 +109,11 @@ export function BusinessPanel() {
                             sx={{ ml: 1, flex: 1 }}
                             placeholder="BUSCAR OPORTUNIDADES"
                             inputProps={{ 'aria-label': 'BUSCAR OPORTUNIDADES' }}
+                            value={descricaoNegocio}
+                            onChange={(e) => setDescricaoNegocio(e.target.value)}
                         />
                         <InputAdornment position="end">
-                            <Button variant="text" style={{ color: 'white', backgroundColor: '#349e34', borderStartStartRadius: '0px', borderEndEndRadius: '2px' }}>BUSCAR</Button>
+                            <Button variant="text" onClick={() => handleSearchBusinesses(descricaoNegocio)} style={{ color: 'white', backgroundColor: '#349e34', borderStartStartRadius: '0px', borderEndEndRadius: '2px' }}>BUSCAR</Button>
                         </InputAdornment>
                     </Paper>
                 </Grid>
@@ -107,7 +136,7 @@ export function BusinessPanel() {
             {/* </Grid> */}
 
             {
-                businessLit?.data.map(business => {
+                businessLitFiltered?.map(business => {
                     return (
                         <Grid item xs={12} sm={12} md={6} lg={3} key={business.id}>
                             <CustomBusinessCard
