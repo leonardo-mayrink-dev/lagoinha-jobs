@@ -62,7 +62,7 @@ export function BusinessPanel() {
         var lista = businessList?.data;
 
         const filtered = lista?.filter((item) =>
-            item.negocio_nome.toLowerCase().includes(searchTerm.toLowerCase())
+            item.negocio_descricao.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
         console.log(filtered);
