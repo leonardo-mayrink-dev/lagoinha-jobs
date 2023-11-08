@@ -31,7 +31,7 @@ export default function CustomAppBar({
     <Box sx={{ flexGrow: 1 }} px={2}>
       <AppBar
         position="fixed"
-        elevation={0}
+        elevation={10}
         color="transparent"
         sx={{
           backdropFilter: "blur(18px)",

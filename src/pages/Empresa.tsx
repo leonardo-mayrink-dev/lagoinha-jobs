@@ -9,16 +9,31 @@ export function Empresa() {
 
   return (
     <Grid
-      container
-      spacing={{ xs: 0, md: 2 }}
-      gap={{ xs: 2, md: 0 }}
+      // container
+      spacing={{ xs: 0, md: 0 }}
+      gap={{ xs: 2, md: 5 }}
       py={10}
-      px={{lg: 40, md: 20, sm: 4, xs: 2}}
-      width={"100%"}
+      px={3}
+      // style={{ border: "1px solid red", marginLeft: "1px" }}
     >
       <Grid item xs={12} md={12}>
         <CadastroEmpresaForm />
       </Grid>
     </Grid>
-  );
+
+
+  //        </Grid >
+  //   <Grid
+  //     container
+  //     spacing={{ xs: 0, md: 2 }}
+  //     gap={{ xs: 2, md: 0 }}
+  //     py={10}
+  //     px={{lg: 40, md: 20, sm: 4, xs: 2}}
+  //     width={"100%"}
+  //   >
+  //     <Grid item xs={12} md={12}>
+  //       <CadastroEmpresaForm />
+  //     </Grid>
+  //   </Grid>
+   );
 }
