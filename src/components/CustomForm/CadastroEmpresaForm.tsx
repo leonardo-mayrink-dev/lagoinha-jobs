@@ -1,10 +1,12 @@
 import {
   Autocomplete,
+  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
   FormGroup,
   FormLabel,
+  Grid,
   Paper,
   Radio,
   RadioGroup,
@@ -93,39 +95,264 @@ export function CadastroEmpresaForm() {
     setClassification(null);
     setIsAvailable(true);
   };
+
   return (
-    <Paper elevation={0}>
+    <Paper elevation={0} >
       <CustomForm
         // props for form
         action="#"
         method="POST"
-        onFormSubmit={handleSubmit}
+        onFormSubmit={handleSubmit}      
         // grid props
         container
         gap={2}
-        px={3}
+        px={1}
         py={4}
-        justifyContent={"end"}
+        // justifyContent={"end"}
         flexDirection={"column"}
+      // sx={{ m: 1, width: '60ch' }}
+
       >
         {/* Form title */}
         <Typography variant="h5">Cadastro de Empresa</Typography>
 
+
+
         {/* Text input */}
         {/* https://mui.com/material-ui/react-text-field/ */}
-        <FormControl sx={{ width: "100%" }}>
-          <TextField
+        {/* <FormControl sx={{ width: "100%"}}  >
+          <TextField           
             name="movie-title"
             label="Movie title"
             required
             value={movieTitle}
-            onChange={(e) => setMovieTitle(e.target.value)}
+            onChange={(e) => setMovieTitle(e.target.value)}    
+            // sx={{ p: '2px 1px', display: 'flex', alignItems: 'center' }}      
+            
+            
           />
-        </FormControl>
+
+
+        </FormControl> */}
+
+        {/* /////////////////////////////////////////////////////////// */}
+
+        <Grid container
+          spacing={{ xs: 0, md: 2 }}
+          gap={{ xs: 2, md: 0 }}
+          py={5}
+          px={0}
+          width={"100%"}>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="nome-empresa"
+                label="Nome da empresa"
+                required
+              // value={movieTitle}
+              // onChange={(e) => setNomeEmpresa(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="descricao-empresa"
+                label="Descrição da empresa"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="wpp"
+                label="Whatsapp"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="telefone"
+                label="Telefone"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="cnpj"
+                label="CNPJ"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="endereco-empresa"
+                label="Endereço"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="endereco-numero"
+                label="Número"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="endereco-complemento"
+                label="Complemento"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>          
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="cep"
+                label="CEP"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="bairro"
+                label="Bairro"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="cidade"
+                label="Cidade"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={3} lg={3}>
+            {/* <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="estado"
+                label="Estado"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl> */}
+            <FormControl sx={{ width: "100%" }}>
+              <Autocomplete
+                disablePortal
+                id="genres"
+                options={genreOptions || []}
+                value={genre}
+                onChange={(e, value) => setGenre(value)}
+                renderInput={(params) => (
+                  <TextField {...params} label="Estado" required />
+                )}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="url-site"
+                label="Site da empresa"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <FormControl sx={{ width: "100%" }}>
+              <TextField
+                name="url-instagram"
+                label="Instagram da empresa"
+                required
+              // value={}
+              // onChange={(e) => set(e.target.value)}
+              />
+            </FormControl>
+          </Grid>
+
+
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* /////////////////////////////////////////////////////////// */}
 
         {/* Autocomplete */}
         {/* https://mui.com/material-ui/react-autocomplete/ */}
-        <FormControl sx={{ width: "100%" }}>
+        {/* <FormControl sx={{ width: "100%" }}>
           <Autocomplete
             disablePortal
             id="genres"
@@ -136,23 +363,23 @@ export function CadastroEmpresaForm() {
               <TextField {...params} label="Genre" required />
             )}
           />
-        </FormControl>
+        </FormControl> */}
 
         {/* Rating */}
         {/* https://mui.com/material-ui/react-rating/ */}
-        <FormControl>
+        {/* <FormControl>
           <FormLabel id="avaliation-label">Overrall avaliation</FormLabel>
           <Rating
             name="avaliation"
             onChange={(e, value) => setAvaliation(value)}
             value={avaliation}
           />
-        </FormControl>
+        </FormControl> */}
 
         {/* Radio group */}
         {/* https://mui.com/material-ui/react-radio-button/ */}
-        <FormControl>
-          {/* classifications: https://en.wikipedia.org/wiki/Motion_Picture_Association_film_rating_system#:~:text=Rated%20G%3A%20General%20audiences%20%E2%80%93%20All,accompanying%20parent%20or%20adult%20guardian. */}
+        {/* classifications: https://en.wikipedia.org/wiki/Motion_Picture_Association_film_rating_system#:~:text=Rated%20G%3A%20General%20audiences%20%E2%80%93%20All,accompanying%20parent%20or%20adult%20guardian. */}
+        {/* <FormControl>
           <FormLabel id="classification-label">Classification</FormLabel>
           <RadioGroup name="classification-group" row={false}>
             {classificationOptions?.map((option) => (
@@ -166,11 +393,11 @@ export function CadastroEmpresaForm() {
               />
             ))}
           </RadioGroup>
-        </FormControl>
+        </FormControl> */}
 
         {/* Checkboxes */}
         {/* https://mui.com/material-ui/react-checkbox/ */}
-        <FormControl>
+        {/* <FormControl>
           <FormLabel id="classification-label">Available languages</FormLabel>
           <FormGroup row>
             {availableLanguageOptions?.map((language) => (
@@ -191,10 +418,10 @@ export function CadastroEmpresaForm() {
               />
             ))}
           </FormGroup>
-        </FormControl>
+        </FormControl> */}
 
         {/* Switch */}
-        <FormGroup>
+        {/* <FormGroup>
           <FormControlLabel
             control={
               <Switch
@@ -204,7 +431,7 @@ export function CadastroEmpresaForm() {
             }
             label="is available?"
           />
-        </FormGroup>
+        </FormGroup> */}
       </CustomForm>
     </Paper>
   );

@@ -20,7 +20,7 @@ export function CustomForm(props: TCustomForm) {
             {props.children}
           </Grid>
           <Box display={'flex'} justifyContent={'end'} alignItems={'end'} flexDirection={'row'} mb={2} p={3}>
-            <Button type="submit" color="secondary">Submit</Button>
+            <Button type="submit" color="secondary">Enviar</Button>
           </Box>
         </form>
       </Grid>
