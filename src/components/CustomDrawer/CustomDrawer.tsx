@@ -14,6 +14,8 @@ import Close from "@mui/icons-material/Close";
 import Home from "@mui/icons-material/Home";
 import Feed from "@mui/icons-material/Feed";
 import Cable from "@mui/icons-material/Cable";
+import BusinessIcon from "@mui/icons-material/Business";
+import BusinessPanelIcon from "@mui/icons-material/Monitor";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { ThemeContext, getTheme } from "../../Theme";
@@ -49,7 +51,7 @@ export function CustomDrawer({
         </IconButton>
       </DrawerHeader>
       <Box
-        sx={{ width: 270, height: '100%' }}
+        sx={{ width: 280, height: '100%' }}
         display={'flex'}
         flexDirection={'column'}
         role="presentation"
@@ -79,7 +81,7 @@ export function CustomDrawer({
           >
             <ListItemButton>
               <ListItemIcon>
-                <Feed />
+                <BusinessPanelIcon />
               </ListItemIcon>
               <ListItemText color="text.main" primary={"Painel de Negócios"} />
             </ListItemButton>
@@ -92,9 +94,9 @@ export function CustomDrawer({
           >
             <ListItemButton>
               <ListItemIcon>
-                <Cable />
+                <BusinessIcon />
               </ListItemIcon>
-              <ListItemText color="text.main" primary={"Empresa"} />
+              <ListItemText color="text.main" primary={"Cadastro de Empresa"} />
             </ListItemButton>
           </ListItem>
           {/* <ListItem
