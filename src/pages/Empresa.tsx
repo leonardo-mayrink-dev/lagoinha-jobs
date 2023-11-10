@@ -12,9 +12,9 @@ export function Empresa() {
       // container
       spacing={{ xs: 0, md: 0 }}
       gap={{ xs: 2, md: 5 }}
-      py={10}
-      px={3}
-      // style={{ border: "1px solid red", marginLeft: "1px" }}
+      py={1}
+      px={1}
+      style={{ marginTop: "65px" }}
     >
       <Grid item xs={12} md={12}>
         <CadastroEmpresaForm />
