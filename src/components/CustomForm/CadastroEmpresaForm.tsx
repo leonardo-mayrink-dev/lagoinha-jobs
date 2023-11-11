@@ -27,48 +27,8 @@ import { useLanguages } from "../../hooks/useLanguages";
 import React from "react";
 import { IMaskInput } from 'react-imask';
 import { ThirteenMp } from "@mui/icons-material";
-
-interface CustomProps {
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
-}
-
-const TextMaskCustom = React.forwardRef<HTMLInputElement, CustomProps>(
-  function TextMaskCustom(props, ref) {
-    const { onChange, ...other } = props;
-    return (
-      <IMaskInput
-        {...other}
-        mask="(00) 00000-0000"
-        definitions={{
-          '#': /[1-9]/,
-        }}
-        inputRef={ref}
-        onAccept={(value: any) => onChange({ target: { name: props.name, value } })}
-        overwrite
-      />
-    );
-  },
-);
-
-const TextMaskCNPJCustom = React.forwardRef<HTMLInputElement, CustomProps>(
-  function TextMaskCNPJCustom(props, ref) {
-    const { onChange, ...other } = props;
-    return (
-      <IMaskInput
-        {...other}
-        mask="00.000.000/0000-00"
-        definitions={{
-          '#': /[1-9]/,
-        }}
-        inputRef={ref}
-        onAccept={(value: any) => onChange({ target: { name: props.name, value } })}
-        overwrite
-      />
-    );
-  },
-);
-
+import TextMaskCustom from "../CustomInput/CustomInputPhone";
+import TextMaskCNPJCustom from "../CustomInput/CustomInputCNPJ";
 
 
 export function CadastroEmpresaForm() {
@@ -315,6 +275,8 @@ export function CadastroEmpresaForm() {
                 name="textmask"
                 id="formatted-text-mask-input"
                 InputProps={{
+                  
+                  // inputComponent: TextMaskCustom as any,
                   inputComponent: TextMaskCustom as any,
                 }}
               />
@@ -331,6 +293,7 @@ export function CadastroEmpresaForm() {
                 name="textmask"
                 id="formatted-text-mask-input"
                 InputProps={{
+                  // inputComponent: TextMaskCustom as any,
                   inputComponent: TextMaskCustom as any,
                 }}
               />
