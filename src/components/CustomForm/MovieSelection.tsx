@@ -100,6 +100,7 @@ export function MovieSelection() {
         action="#"
         method="POST"
         onFormSubmit={handleSubmit}
+        onFormClear={() => null}
         // grid props
         container
         gap={2}

@@ -37,7 +37,7 @@ export function LoginForm(props: TLoginForm) {
       action="#"
       method="POST"
       onFormSubmit={handleSubmit}
-
+      onFormClear={() => null}
       // grid props
       container
       gap={2}
