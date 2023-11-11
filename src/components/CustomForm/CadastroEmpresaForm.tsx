@@ -32,7 +32,7 @@ import { useClassifications } from "../../hooks/useClassifications";
 import { useLanguages } from "../../hooks/useLanguages";
 import React from "react";
 import { IMaskInput } from 'react-imask';
-import { ThirteenMp } from "@mui/icons-material";
+import { HomeRepairServiceRounded, ThirteenMp } from "@mui/icons-material";
 import TextMaskCustom from "../CustomInput/CustomInputPhone";
 import TextMaskCNPJCustom from "../CustomInput/CustomInputCNPJ";
 import { CustomDialog } from "../CustomDialog/CustomDialog";
@@ -55,15 +55,15 @@ export function CadastroEmpresaForm() {
   const [siteEmpresa, setSiteEmpresa] = useState("");
   const [instagramEmpresa, setInstagramEmpresa] = useState("");
   const [formValidation, setFormValidation] = useState({
-      hasError: false,
-      msg : ''
+    hasError: false,
+    msg: ''
   });
 
   const [isMsgSearchOpenned, setIsMsgSearchOpenned] = useState(false);
 
-    const msgSearchCallback = () => {
-        setIsMsgSearchOpenned(false);
-    };
+  const msgSearchCallback = () => {
+    setIsMsgSearchOpenned(false);
+  };
 
 
   // genre options
@@ -110,26 +110,31 @@ export function CadastroEmpresaForm() {
     // since we're going to control the inputs via state
     e.preventDefault();
     console.log("entrou submit");
-    setFormValidation({hasError: true, msg: 'Campo obrigatório'});
+    setFormValidation({ hasError: true, msg: 'Campo obrigatório' });
     console.log(descricaoEmpresa.length);
 
     // actual validation and axios calls
-    if (movieTitle.length > 0 && !!genre && avaliation && !!classification) {
-      const payload = {
-        movieTitle,
-        genre,
-        avaliation,
-        classification,
-        availableLanguages,
-        isAvailable,
-      };
-      Api.post("movie/register", payload);
-      alert("Form was successfully registered.");
-      
-      clearAll();
-    }
+    // if (movieTitle.length > 0 && !!genre && avaliation && !!classification) {
+    //   const payload = {
+    //     movieTitle,
+    //     genre,
+    //     avaliation,
+    //     classification,
+    //     availableLanguages,
+    //     isAvailable,
+    //   };
+    //   Api.post("movie/register", payload);
+    //   alert("Form was successfully registered.");
 
-    setIsMsgSearchOpenned(true);
+    //   clearAll();
+    // }
+
+    if (nomeEmpresa.length > 0 && descricaoEmpresa.length > 0 && whatsapp.textmask.length > 0 && cnpj.textmask.length > 0
+      && endereco.length > 0 && bairro.length > 0 && cidade.length > 0 && !!genre) {
+        setIsMsgSearchOpenned(true);
+    }
+    
+
   };
 
   const clearAll = () => {
@@ -155,7 +160,7 @@ export function CadastroEmpresaForm() {
     setCNPJ({
       textmask: '',
     });
-    
+
     setFormValidation({
       hasError: false,
       msg: ''
@@ -255,8 +260,8 @@ export function CadastroEmpresaForm() {
                 name="nome-empresa"
                 label="Nome da empresa*"
                 // required
-                error={nomeEmpresa == ''&& formValidation.hasError}
-                helperText={ formValidation.hasError && nomeEmpresa.length === 0 ? formValidation.msg : ''}
+                error={nomeEmpresa == '' && formValidation.hasError}
+                helperText={formValidation.hasError && nomeEmpresa.length === 0 ? formValidation.msg : ''}
                 value={nomeEmpresa}
                 onChange={(e) => setNomeEmpresa(e.target.value)}
               />
@@ -270,8 +275,8 @@ export function CadastroEmpresaForm() {
                 name="descricao-empresa"
                 label="Descrição da empresa*"
                 // required
-                error={descricaoEmpresa == ''&& formValidation.hasError}
-                helperText={ formValidation.hasError && descricaoEmpresa.length === 0 ?  formValidation.msg : ''}
+                error={descricaoEmpresa == '' && formValidation.hasError}
+                helperText={formValidation.hasError && descricaoEmpresa.length === 0 ? formValidation.msg : ''}
                 value={descricaoEmpresa}
                 onChange={(e) => setDescricaoEmpresa(e.target.value)}
               />
@@ -282,15 +287,15 @@ export function CadastroEmpresaForm() {
             <FormControl sx={{ width: "100%" }}>
               <TextField
                 // name="wpp"
-                label="Whatsapp*"                
+                label="Whatsapp*"
                 error={whatsapp.textmask === '' && formValidation.hasError}
-                helperText={ formValidation.hasError && whatsapp.textmask.length === 0 ?  formValidation.msg : ''}
+                helperText={formValidation.hasError && whatsapp.textmask.length === 0 ? formValidation.msg : ''}
                 value={whatsapp.textmask}
                 onChange={handleChangeWhatsapp}
                 name="textmask"
                 id="formatted-text-mask-input"
                 InputProps={{
-                  
+
                   // inputComponent: TextMaskCustom as any,
                   inputComponent: TextMaskCustom as any,
                 }}
@@ -321,7 +326,7 @@ export function CadastroEmpresaForm() {
                 // name="cnpj"
                 label="CNPJ*"
                 error={cnpj.textmask === '' && formValidation.hasError}
-                helperText={ formValidation.hasError && cnpj.textmask.length === 0 ?  formValidation.msg : ''}
+                helperText={formValidation.hasError && cnpj.textmask.length === 0 ? formValidation.msg : ''}
                 value={cnpj.textmask}
                 onChange={handleChangeCNPJ}
                 name="textmask"
@@ -338,8 +343,8 @@ export function CadastroEmpresaForm() {
               <TextField
                 name="endereco-empresa"
                 label="Endereço*"
-                error={endereco == ''&& formValidation.hasError}
-                helperText={ formValidation.hasError && endereco.length === 0 ?  formValidation.msg : ''}                
+                error={endereco == '' && formValidation.hasError}
+                helperText={formValidation.hasError && endereco.length === 0 ? formValidation.msg : ''}
                 value={endereco}
                 onChange={(e) => setEndereco(e.target.value)}
               />
@@ -384,8 +389,8 @@ export function CadastroEmpresaForm() {
               <TextField
                 name="bairro"
                 label="Bairro*"
-                error={bairro == ''&& formValidation.hasError}
-                helperText={ formValidation.hasError && bairro.length === 0 ?  formValidation.msg : ''}                
+                error={bairro == '' && formValidation.hasError}
+                helperText={formValidation.hasError && bairro.length === 0 ? formValidation.msg : ''}
                 value={bairro}
                 onChange={(e) => setBairro(e.target.value)}
               />
@@ -397,8 +402,8 @@ export function CadastroEmpresaForm() {
               <TextField
                 name="cidade"
                 label="Cidade*"
-                error={cidade == ''&& formValidation.hasError}
-                helperText={ formValidation.hasError && cidade.length === 0 ?  formValidation.msg : ''}                
+                error={cidade == '' && formValidation.hasError}
+                helperText={formValidation.hasError && cidade.length === 0 ? formValidation.msg : ''}
                 value={cidade}
                 onChange={(e) => setCidade(e.target.value)}
               />
@@ -407,16 +412,16 @@ export function CadastroEmpresaForm() {
 
           <Grid item xs={12} sm={12} md={3} lg={3}>
             <FormControl sx={{ width: "100%" }}>
-              <Autocomplete              
+              <Autocomplete
                 disablePortal
                 id="genres"
                 options={genreOptions || []}
                 value={genre}
                 onChange={(e, value) => setGenre(value)}
                 renderInput={(params) => (
-                  <TextField {...params} label="Estado" 
-                  error={ params.inputProps.value === ''&& formValidation.hasError}
-                  helperText={ formValidation.hasError && params.inputProps.value?.toString().length === 0 ?  formValidation.msg : ''}
+                  <TextField {...params} label="Estado"
+                    error={params.inputProps.value === '' && formValidation.hasError}
+                    helperText={formValidation.hasError && params.inputProps.value?.toString().length === 0 ? formValidation.msg : ''}
                   />
                 )}
               />
@@ -555,32 +560,32 @@ export function CadastroEmpresaForm() {
         </FormGroup> */}
       </CustomForm>
       <CustomDialog
-                open={isMsgSearchOpenned}
-                title="Ops..."
-                onClose={() => setIsMsgSearchOpenned(false)}
-            >
-                {/* <LoginForm callback={msgSearchCallback} /> */}
-                <Dialog
-                    // fullScreen={fullScreen}
-                    open={isMsgSearchOpenned}
-                    onClose={() => setIsMsgSearchOpenned(false)}
-                    aria-labelledby="responsive-dialog-title"
-                >
-                    <DialogTitle id="responsive-dialog-title">
-                        {"Tudo certo!"}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Cadastro realizado com sucesso.
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={() => {setIsMsgSearchOpenned(false); clearAll();}} autoFocus>
-                            Fechar
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </CustomDialog>
+        open={isMsgSearchOpenned}
+        title="Ops..."
+        onClose={() => setIsMsgSearchOpenned(false)}
+      >
+        {/* <LoginForm callback={msgSearchCallback} /> */}
+        <Dialog
+          // fullScreen={fullScreen}
+          open={isMsgSearchOpenned}
+          onClose={() => setIsMsgSearchOpenned(false)}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">
+            {"Tudo certo!"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Cadastro realizado com sucesso.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setIsMsgSearchOpenned(false); clearAll(); }} autoFocus>
+              Fechar
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </CustomDialog>
     </Paper>
   );
 }
