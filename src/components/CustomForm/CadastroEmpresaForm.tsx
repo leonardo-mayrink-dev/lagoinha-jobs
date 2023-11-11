@@ -1,7 +1,13 @@
 import {
   Autocomplete,
   Box,
+  Button,
   Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -29,6 +35,7 @@ import { IMaskInput } from 'react-imask';
 import { ThirteenMp } from "@mui/icons-material";
 import TextMaskCustom from "../CustomInput/CustomInputPhone";
 import TextMaskCNPJCustom from "../CustomInput/CustomInputCNPJ";
+import { CustomDialog } from "../CustomDialog/CustomDialog";
 
 
 export function CadastroEmpresaForm() {
@@ -52,6 +59,11 @@ export function CadastroEmpresaForm() {
       msg : ''
   });
 
+  const [isMsgSearchOpenned, setIsMsgSearchOpenned] = useState(false);
+
+    const msgSearchCallback = () => {
+        setIsMsgSearchOpenned(false);
+    };
 
 
   // genre options
@@ -113,8 +125,11 @@ export function CadastroEmpresaForm() {
       };
       Api.post("movie/register", payload);
       alert("Form was successfully registered.");
+      
       clearAll();
     }
+
+    setIsMsgSearchOpenned(true);
   };
 
   const clearAll = () => {
@@ -539,6 +554,33 @@ export function CadastroEmpresaForm() {
           />
         </FormGroup> */}
       </CustomForm>
+      <CustomDialog
+                open={isMsgSearchOpenned}
+                title="Ops..."
+                onClose={() => setIsMsgSearchOpenned(false)}
+            >
+                {/* <LoginForm callback={msgSearchCallback} /> */}
+                <Dialog
+                    // fullScreen={fullScreen}
+                    open={isMsgSearchOpenned}
+                    onClose={() => setIsMsgSearchOpenned(false)}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">
+                        {"Tudo certo!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Cadastro realizado com sucesso.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => {setIsMsgSearchOpenned(false); clearAll();}} autoFocus>
+                            Fechar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </CustomDialog>
     </Paper>
   );
 }

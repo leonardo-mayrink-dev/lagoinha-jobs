@@ -1,18 +1,7 @@
-import { AppBar, Box, Button, Divider, FormControl, Grid, IconButton, InputBase, Paper, TextField, Typography } from "@mui/material";
-
-import { MyLinePlot } from "../components/CustomPlot/MyLinePlot";
-import { MyBarPlot } from "../components/CustomPlot/MyBarPlot";
-import { MyTodoTable } from "../components/CustomTable/MyTodoTable";
-import { ChatInformative } from "../components/CustomInformative/ChatInformative";
-import { MyRegularTable } from "../components/CustomTable/MyRegularTable";
-import styled from "@emotion/styled";
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, FormControl, Grid, IconButton, InputBase, Paper, TextField, Typography } from "@mui/material";
 import { CustomInformative } from "../components/CustomInformative/CustomInformative";
 import { CustomIcon } from "../components/CustomIcon/CustomIcon";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import SellIcon from '@mui/icons-material/Sell';
-import GroupIcon from '@mui/icons-material/Group';
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import FABMenu from "../components/CustomFab/CustomFab";
 import { CustomBusinessCard } from "../components/CustomCard/BusinessCard";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { Api } from "../services/Api";
@@ -20,6 +9,8 @@ import { Datum, TBusiness, TBusiness2 } from "../types/TBusiness";
 import { CustomForm } from "../components/CustomForm/CustomForm";
 import InputAdornment from '@mui/material/InputAdornment';
 import { ThemeContext, getTheme } from "../Theme";
+import { CustomDialog } from "../components/CustomDialog/CustomDialog";
+import { Label } from "@mui/icons-material";
 
 export function BusinessPanel() {
     // https://mui.com/material-ui/react-grid/
@@ -33,6 +24,12 @@ export function BusinessPanel() {
 
     const { mode } = useContext(ThemeContext);
 
+    const [isMsgSearchOpenned, setIsMsgSearchOpenned] = useState(false);
+
+    const msgSearchCallback = () => {
+        setIsMsgSearchOpenned(false);
+    };
+
     useEffect(() => {
 
         // Api.get<TBusiness[]>("https://my-json-server.typicode.com/leonardo-mayrink-dev/mockdata/business")
@@ -43,11 +40,10 @@ export function BusinessPanel() {
                 setBusinessList(response.data);
                 setBusinessListFiltered(response.data.data);
             })
-
     }, []);
 
     useEffect(() => {
-        handleSearchBusinesses(searchTerm);
+        // handleSearchBusinesses(searchTerm);
     }, [searchTerm])
 
 
@@ -57,19 +53,20 @@ export function BusinessPanel() {
 
     const handleSearchBusinesses = (searchTerm: string): void => {
 
-        console.log('entrou no metodo search');
-
         var lista = businessList?.data;
 
         const filtered = lista?.filter((item) =>
             item.negocio_descricao.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-        console.log(filtered);
+        if (filtered?.length != undefined && filtered.length > 0) {
+            setBusinessListFiltered(filtered);
+        }
+        else {
+            setIsMsgSearchOpenned(true);
+        }
 
-        setBusinessListFiltered(filtered);
 
-        console.log(businessList);
 
     }
 
@@ -79,7 +76,7 @@ export function BusinessPanel() {
             <AppBar
                 position="fixed"
                 elevation={20}
-                color="transparent"                
+                color="transparent"
                 sx={{
                     boxShadow: "0px -0.2em 0.5em grey",
                     backdropFilter: "blur(18px)",
@@ -181,6 +178,34 @@ export function BusinessPanel() {
 
 
             </Grid >
+
+            <CustomDialog
+                open={isMsgSearchOpenned}
+                title="Ops..."
+                onClose={() => setIsMsgSearchOpenned(false)}
+            >
+                {/* <LoginForm callback={msgSearchCallback} /> */}
+                <Dialog
+                    // fullScreen={fullScreen}
+                    open={isMsgSearchOpenned}
+                    onClose={() => setIsMsgSearchOpenned(false)}
+                    aria-labelledby="responsive-dialog-title"
+                >
+                    <DialogTitle id="responsive-dialog-title">
+                        {"Ooops!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Nenhum resultado encontrado.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => {setIsMsgSearchOpenned(false); handleSearchBusinesses(''); setDescricaoNegocio('')}} autoFocus>
+                            Fechar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </CustomDialog>
         </>
     );
 }

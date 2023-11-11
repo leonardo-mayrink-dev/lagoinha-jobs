@@ -21,19 +21,5 @@ export function Empresa() {
       </Grid>
     </Grid>
 
-
-  //        </Grid >
-  //   <Grid
-  //     container
-  //     spacing={{ xs: 0, md: 2 }}
-  //     gap={{ xs: 2, md: 0 }}
-  //     py={10}
-  //     px={{lg: 40, md: 20, sm: 4, xs: 2}}
-  //     width={"100%"}
-  //   >
-  //     <Grid item xs={12} md={12}>
-  //       <CadastroEmpresaForm />
-  //     </Grid>
-  //   </Grid>
    );
 }

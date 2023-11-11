@@ -70,12 +70,12 @@ export default function CustomAppBar({
 
           </Typography>
 
-          <Button
+          {/* <Button
             // color={getTheme(mode).palette.text.primary}
             onClick={() => setIsLoginOpen(true)}
           >
             Login
-          </Button>
+          </Button> */}
           <CustomDialog
             open={isLoginOpen}
             title="Enter your credentials"
