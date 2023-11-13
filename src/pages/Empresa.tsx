@@ -14,7 +14,7 @@ export function Empresa() {
       gap={{ xs: 2, md: 5 }}
       py={1}
       px={1}
-      style={{ marginTop: "65px" }}
+      style={{ marginTop: "120px" }}
     >
       <Grid item xs={12} md={12}>
         <CadastroEmpresaForm />

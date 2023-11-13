@@ -78,10 +78,12 @@ export function BusinessPanel() {
                 elevation={20}
                 color="transparent"
                 sx={{
-                    boxShadow: "0px -0.2em 0.5em grey",
+                    // boxShadow: "0px -0.2em 0.5em grey",
                     backdropFilter: "blur(18px)",
                     borderBottom: `1px solid ${getTheme(mode).palette.divider}`,
-                    marginTop: "60px",
+                    marginTop: "116px",
+                    // backgroundColor:'black',
+                    
                 }}
             >
                 <Grid fontStyle={{}} alignItems="center" justifyContent="center" px={{ lg: 40, md: 20, sm: 4, xs: 0 }}>
@@ -110,10 +112,11 @@ export function BusinessPanel() {
                 // container
                 spacing={{ xs: 0, md: 0 }}
                 gap={{ xs: 2, md: 5 }}
-                py={10}
+                py={0}
                 // py={0}
                 px={3}
-            // style={{border: "1px solid red", marginLeft: "1px"}}            
+            // style={{border: "1px solid red", marginLeft: "1px"}}        
+            style={{ marginTop: "135px" }}    
             >
 
                 {/* <Grid item xs={12} sm={12} md={12} lg={12} style={{ marginTop: '80px', marginBottom: '20px' }} >
