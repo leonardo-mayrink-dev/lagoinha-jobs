@@ -55,7 +55,7 @@ export function BusinessPanel() {
 
         var lista = businessList?.data;
 
-        const filtered = lista?.filter((item) =>
+        var filtered = lista?.filter((item) =>
             item.negocio_descricao.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
@@ -63,7 +63,17 @@ export function BusinessPanel() {
             setBusinessListFiltered(filtered);
         }
         else {
-            setIsMsgSearchOpenned(true);
+            filtered = lista?.filter((item) =>
+                item.negocio_nome.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            if (filtered?.length != undefined && filtered.length > 0) {
+                setBusinessListFiltered(filtered);
+            }
+            else {
+                setIsMsgSearchOpenned(true);
+            }
+
         }
 
 
@@ -83,7 +93,7 @@ export function BusinessPanel() {
                     borderBottom: `1px solid ${getTheme(mode).palette.divider}`,
                     marginTop: "116px",
                     // backgroundColor:'black',
-                    
+
                 }}
             >
                 <Grid fontStyle={{}} alignItems="center" justifyContent="center" px={{ lg: 40, md: 20, sm: 4, xs: 0 }}>
@@ -115,8 +125,8 @@ export function BusinessPanel() {
                 py={0}
                 // py={0}
                 px={3}
-            // style={{border: "1px solid red", marginLeft: "1px"}}        
-            style={{ marginTop: "135px" }}    
+                // style={{border: "1px solid red", marginLeft: "1px"}}        
+                style={{ marginTop: "135px" }}
             >
 
                 {/* <Grid item xs={12} sm={12} md={12} lg={12} style={{ marginTop: '80px', marginBottom: '20px' }} >
@@ -203,7 +213,7 @@ export function BusinessPanel() {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={() => {setIsMsgSearchOpenned(false); handleSearchBusinesses(''); setDescricaoNegocio('')}} autoFocus>
+                        <Button onClick={() => { setIsMsgSearchOpenned(false); handleSearchBusinesses(''); setDescricaoNegocio('') }} autoFocus>
                             Fechar
                         </Button>
                     </DialogActions>
