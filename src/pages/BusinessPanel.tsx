@@ -170,7 +170,7 @@ export function BusinessPanel() {
                                         description={business.negocio_descricao}
                                         services={business.negocio_descricao}
                                         address={business.negocio_endereco}
-                                        phoneNumber={business.negocio_tel_wapp}
+                                        phoneNumber={business.negocio_tel_num}
                                         logo={business.url_logo}
                                         icon={
                                             <CustomIcon

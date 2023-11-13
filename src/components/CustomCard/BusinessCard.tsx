@@ -31,6 +31,18 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
         setIsReadMoreServices(!isReadMoreServices);
     }
 
+    const handleClick = (phoneNumber: number) => {
+        // Appending the phone number to the URL
+        let url = `https://web.whatsapp.com/send?phone=+55${phoneNumber}`;
+        
+
+        // Appending the message to the URL by encoding it
+        url += `&text=${encodeURIComponent('Olá! Estou entrando em contado para saber mais sobre os serviços oferecidos.')}&app_absent=0`;
+
+        // Open our newly created URL in a new tab to send the message
+        window.open(url);
+    }
+
     return (
         <Paper elevation={0} sx={{ borderRadius: 1 }}>
             <Box p={0}>
@@ -135,6 +147,7 @@ export function CustomBusinessCard(props: TCustomBusinessCardProps) {
                         style={{ border: '1px solid #00B37E', color: '#00B37E' }}
                         type="submit"
                         color="secondary"
+                        onClick={() => handleClick(props.phoneNumber)}
                     >
                         <img src={zapIcon} alt="Conexão RH - Lagoinha" style={{ width: "16px", height: "17px", padding: '5px' }} />
                         Entrar em contato
