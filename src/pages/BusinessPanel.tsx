@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, FormControl, Grid, IconButton, InputBase, Paper, TextField, Typography } from "@mui/material";
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, FormControl, Grid, Icon, IconButton, InputBase, Paper, TextField, Typography } from "@mui/material";
 import { CustomInformative } from "../components/CustomInformative/CustomInformative";
 import { CustomIcon } from "../components/CustomIcon/CustomIcon";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -11,6 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { ThemeContext, getTheme } from "../Theme";
 import { CustomDialog } from "../components/CustomDialog/CustomDialog";
 import { Label } from "@mui/icons-material";
+import CloseIcon from '@mui/icons-material/Close';
 
 export function BusinessPanel() {
     // https://mui.com/material-ui/react-grid/
@@ -52,6 +53,8 @@ export function BusinessPanel() {
     }
 
     const handleSearchBusinesses = (searchTerm: string): void => {
+
+        
 
         var lista = businessList?.data;
 
@@ -101,6 +104,7 @@ export function BusinessPanel() {
                         component="form"
                         // sx={{ p: '2px 1px', display: 'flex', alignItems: 'center', width: 300}}
                         sx={{ p: '2px 1px', display: 'flex', alignItems: 'center', margin: "5px 5px" }}
+                        onSubmit={e => {e.preventDefault();}}
 
 
                     >
@@ -109,9 +113,15 @@ export function BusinessPanel() {
                             placeholder="BUSCAR OPORTUNIDADES"
                             inputProps={{ 'aria-label': 'BUSCAR OPORTUNIDADES' }}
                             value={descricaoNegocio}
-                            onChange={(e) => setDescricaoNegocio(e.target.value)}
+                            onChange={(e) => {setDescricaoNegocio(e.target.value);}}
+                            
+                            
                         />
+                        <InputAdornment position="end">                            
+                            <CloseIcon onClick={(e) => {setDescricaoNegocio(''); handleSearchBusinesses('');}} style={{color:'grey'}}/>
+                        </InputAdornment>
                         <InputAdornment position="end">
+                            
                             <Button variant="text" onClick={() => handleSearchBusinesses(descricaoNegocio)} style={{ color: 'white', backgroundColor: '#349e34', borderStartStartRadius: '0px', borderEndEndRadius: '2px' }}>BUSCAR</Button>
                         </InputAdornment>
                     </Paper>

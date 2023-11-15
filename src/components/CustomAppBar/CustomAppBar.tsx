@@ -14,7 +14,7 @@ import { Container, Divider, Grid, List, ListItem, ListItemButton, ListItemIcon,
 import { Link } from "react-router-dom";
 import logoImgBranco from '../../assets/LagoinhaNiteroi_Branco-1536x864.png';
 import logoImgPreto from '../../assets/LagoinhaNiteroi_Preto-1536x864.png';
-import logoCrie from '../../assets/LogoCrie.png';
+import logoCrie from '../../assets/LogoCrie2.png';
 
 export default function CustomAppBar({
   drawerHandler,
@@ -38,9 +38,11 @@ export default function CustomAppBar({
         sx={{
           backdropFilter: "blur(18px)",
           borderBottom: `1px solid ${getTheme(mode).palette.divider}`,
-          
+
         }}
       >
+
+
 
         <Toolbar>
           <IconButton
@@ -53,72 +55,18 @@ export default function CustomAppBar({
             <MenuIcon />
           </IconButton>
 
-          <Typography
-            variant="h6"
-            color={getTheme(mode).palette.text.primary}
-            component="div"
-            sx={{ flexGrow: -1 }}
+          <Box
+            display={'flex'}
+            justifyContent={'center'}
+            alignItems={'end'}
+            flexDirection={'row'}
+            sx={{ flexGrow: 1, mr: 3 }}
           >
-
-            <Box
-              display={'flex'}
-              justifyContent={'left'}
-              alignItems={'left'}
-              flexDirection={'column'}
-            >
-              {/* <img src={logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} /> */}
-              <img src={logoCrie} alt="Guia de Negócios - Lagoinha" style={{ width: "60px", height: "40px", marginBottom: '5px' }} />
-
-            </Box>
-          </Typography>
-
-          <Typography
-            variant="h6"
-            color={getTheme(mode).palette.text.primary}
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-
-
-            <Box
-              display={'flex'}
-              justifyContent={'center'}
-              alignItems={'end'}
-              flexDirection={'row'}
-            >
-              {/* <img src={logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} /> */}
-              <img src={mode === "light" ? logoImgPreto : logoImgBranco} alt="Guia de Negócios - Lagoinha" style={{ width: "140px", height: "60px" }} />
-
-
-            </Box>
-
-
-
-
-
-          </Typography>
-          {/* 
-          <Typography
-            variant="h6"
-            color={getTheme(mode).palette.text.primary}
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-
-
-            <Box
-              display={'flex'}
-              justifyContent={'center'}
-              alignItems={'end'}
-              flexDirection={'row'}
-            >
-              
-              <img src={logoCrie} alt="Guia de Negócios - Lagoinha" style={{ width: "70px", height: "40px" }} />
-
-            </Box>
-
-          </Typography> */}
-
+            {/* <img src={logoImgBranco} alt="Conexão RH - Lagoinha" style={{ width: "140px", height: "60px" }} /> */}
+            <img src={mode === "light" ? logoImgPreto : logoImgBranco} alt="Guia de Negócios - Lagoinha" style={{ width: "140px", height: "60px" }} />
+            <Divider style={{ borderLeft: '1px solid white', height: '44px', marginBottom: '10px' }} />
+            <img src={logoCrie} alt="Guia de Negócios - Lagoinha" style={{ width: "70px", height: "55px", marginBottom: '5px' }} />
+          </Box>
 
 
           {/* <Button
@@ -145,9 +93,9 @@ export default function CustomAppBar({
           // backdropFilter: "blur(18px)",
           borderBottom: `1px solid ${getTheme(mode).palette.divider}`,
           marginTop: "60px",
-          backgroundColor: '#18181a',                    
+          backgroundColor: '#18181a',
         }}
-        
+
       >
         {/* <Grid fontStyle={{}}        
         item xs={4} style={{textAlign: "center"}}
@@ -160,7 +108,7 @@ export default function CustomAppBar({
           justifyContent={'center'}
           alignItems={'center'}
           flexDirection={'column'}
-      
+
         >
 
           <List style={{
